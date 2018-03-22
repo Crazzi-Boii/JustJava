@@ -4,4 +4,7 @@
     <string name="Order">ORDER</string>
     <string name="Price">Price</string>
     <string name="Reset">RESET</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="zero">0</string>
 </resources>

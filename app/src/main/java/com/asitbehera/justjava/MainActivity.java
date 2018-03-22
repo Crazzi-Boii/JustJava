@@ -12,25 +12,37 @@ import java.util.Locale;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
-    int quantity = 5;
+    int quantity = 0;
+    int price = 5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        display(quantity);
+        displayPrice(quantity);
     }
 
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        quantity = 5;
         display(quantity);
-        displayPrice(quantity * 5);
+        displayPrice(quantity);
     }
     public void resetAll(View view) {
         quantity = 0;
         display(quantity);
-        displayPrice(quantity * 5);
+        displayPrice(quantity);
+    }
+    public void increment(View view){
+        quantity++;
+        display(quantity);
+    }
+    public void decrement(View view){
+        if (quantity > 0) {
+            quantity--;
+            display(quantity);
+        }
     }
     /**
      * This method displays the given quantity value on the screen.
@@ -43,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given price on the screen.
      */
     private void displayPrice(int number) {
+        number = number * price;
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance(new Locale("en", "in")).format(number));
     }
